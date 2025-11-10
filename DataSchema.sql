@@ -26,7 +26,7 @@ CREATE TABLE safety_modules (
 CREATE TABLE sensor_units (
     sensor_id SERIAL PRIMARY KEY,
     temperature REAL CHECK (temperature BETWEEN -50 AND 150),
-    location VARCHAR(50),
+    sensor_location VARCHAR(50),
     controller_id INT REFERENCES system_controllers (controller_id)
 );
 
