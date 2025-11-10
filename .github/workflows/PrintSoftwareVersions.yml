@@ -1,0 +1,50 @@
+name: Print Software Versions
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  toolchain:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Node.js and npm
+        run: |
+          node -v || echo "node not installed"
+          npm -v  || echo "npm not installed"
+
+      - name: Print Python
+        run: |
+          python3 --version || echo "python not installed"
+          pip3 --version || echo "pip not installed"
+
+      - name: Print Java
+        run: |
+          java -version || echo "java not installed"
+
+  db-version:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U postgres"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: Install psql
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+
+      - name: Print PostgreSQL Version
+        env:
+          PGPASSWORD: postgres
+        run: |
+          psql -h localhost -U postgres -c "SELECT version();"
