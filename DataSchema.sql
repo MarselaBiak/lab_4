@@ -59,3 +59,4 @@ ALTER TABLE app_users
 ADD CONSTRAINT username_length_check
 CHECK (CHAR_LENGTH(full_name) > 1);
 
+
