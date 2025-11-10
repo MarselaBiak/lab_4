@@ -9,7 +9,7 @@ CREATE TABLE app_users (
 -- Таблиця контролерів системи
 CREATE TABLE system_controllers (
     controller_id SERIAL PRIMARY KEY,
-    mode VARCHAR(20) CHECK (mode IN ('auto', 'manual')),
+    controller_mode VARCHAR(20) CHECK (controller_mode IN ('auto', 'manual')),
     update_interval INTEGER CHECK (update_interval > 0),
     au_id INT REFERENCES app_users (au_id)
 );
