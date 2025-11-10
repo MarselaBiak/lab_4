@@ -23,9 +23,9 @@ CREATE TABLE safety_modules (
 );
 
 -- Таблиця сенсорів
-CREATE TABLE sensors (
+CREATE TABLE sensor_units (
     sensor_id SERIAL PRIMARY KEY,
-    temperature FLOAT CHECK (temperature >= -50 AND temperature <= 150),
+    temperature REAL CHECK (temperature BETWEEN -50 AND 150),
     location VARCHAR(50),
     controller_id INT REFERENCES system_controllers (controller_id)
 );
