@@ -1,0 +1,22 @@
+name: Program Code Linter
+
+on:
+  push:
+    branches:
+      - SW_LabWork_4
+
+jobs:
+  ProgramCodeLinter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code in Repository
+        uses: actions/checkout@v3
+
+      - name: Install Flake8
+        run: |
+          pip install flake8
+
+      - name: Run Python Linter
+        run: |
+          flake8 ProgramCode.py
