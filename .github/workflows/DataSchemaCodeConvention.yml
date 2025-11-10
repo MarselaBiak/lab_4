@@ -15,4 +15,5 @@ jobs:
       - name: Install and Run SQLFluff
         run: |
           pip install sqlfluff
-          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect oracle
+          sqlfluff lint $GITHUB_WORKSPACE/DataSchemaModified.sql --dialect oracle
+
