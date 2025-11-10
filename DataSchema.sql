@@ -30,13 +30,12 @@ CREATE TABLE sensors (
     controller_id INT REFERENCES system_controllers (controller_id)
 );
 
--- Таблиця записів даних сенсорів
 CREATE TABLE sensor_data_logs (
     record_id SERIAL PRIMARY KEY,
     ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     sensor_value FLOAT,
-    sensor_id INT REFERENCES sensors (sensor_id),
-    au_id INT REFERENCES app_users (au_id)
+    sensor_id INT REFERENCES sensors(sensor_id),
+    user_id INT REFERENCES app_users(au_id)
 );
 
 -- Таблиця модулів творчості
