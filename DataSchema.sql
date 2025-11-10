@@ -19,11 +19,19 @@ CREATE TABLE safety_modules (
     controller_id INT REFERENCES system_controllers (controller_id)
 );
 
-CREATE TABLE sensors (
+CREATE TABLE sensor_units (
     sensor_id SERIAL PRIMARY KEY,
     temperature FLOAT CHECK (temperature BETWEEN -50 AND 150),
     location VARCHAR(50),
     controller_id INT REFERENCES system_controllers (controller_id)
+);
+
+CREATE TABLE sensor_data_log (
+    record_id SERIAL PRIMARY KEY,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    value FLOAT,
+    sensor_id INT REFERENCES sensor_units (sensor_id),
+    user_id INT REFERENCES app_users (user_id)
 );
 
 CREATE TABLE data_records (
