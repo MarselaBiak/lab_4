@@ -67,4 +67,3 @@ CHECK (email ~ '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$');
 ALTER TABLE app_users
 ADD CONSTRAINT username_pattern_check
 CHECK (full_name ~ '^([A-Z][a-z]+)(\s[A-Z][a-z]+)*$');
-
