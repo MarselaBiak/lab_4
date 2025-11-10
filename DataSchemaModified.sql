@@ -11,4 +11,3 @@ mode varchar(20) check (mode in ('auto','manual')),
 update_interval integer check (update_interval > 0),
 user_id int references users(user_id)
 )
-
