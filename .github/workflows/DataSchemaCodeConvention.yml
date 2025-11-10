@@ -17,3 +17,4 @@ jobs:
           pip install sqlfluff
           sqlfluff lint $GITHUB_WORKSPACE/DataSchemaModified.sql --dialect oracle
 
+
