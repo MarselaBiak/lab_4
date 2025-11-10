@@ -2,7 +2,7 @@ name: Data Schema Code Convention
 
 on:
   push:
-    branches: [LW11]
+    branches: [SW_LabWork_4]
 
 jobs:
   data_schema_linter:
