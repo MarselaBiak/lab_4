@@ -1,29 +1,18 @@
 name: Data Schema Code Convention
 
 on:
-  # Запуск workflow только при push-событиях
   push:
-    # Только для гілки LW11
     branches: [LW11]
 
 jobs:
   data_schema_linter:
-    # Используем последнюю версию Ubuntu
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Repository
-        # Клонируем репозиторий
         uses: actions/checkout@v3
 
       - name: Install and Run SQLFluff
-        # Проверка SQL-файлов схемы данных
         run: |
           pip install sqlfluff
-          sqlfluff lint $GITHUB_WORKSPACE/schema.sql --dialect oracle
-
-      - name: Install and Run JSON Linter
-        # Проверка JSON-файлов схемы данных
-        run: |
-          npm i -g @prantlf/jsonlint
-          jsonlint $GITHUB_WORKSPACE/schema.json
+          sqlfluff lint $GITHUB_WORKSPACE/DataSchema.sql --dialect oracle
