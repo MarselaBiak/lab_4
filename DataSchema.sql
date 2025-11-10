@@ -53,16 +53,8 @@ CREATE TABLE user_feedback (
 
 ALTER TABLE app_users
 ADD CONSTRAINT email_format_check
-CHECK (
-    email ~ '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$'
-);
+CHECK (position('@' IN email) > 1);
 
 ALTER TABLE app_users
-ADD CONSTRAINT username_pattern_check
-CHECK (
-    full_name ~ '^[A-Z][a-z]+(?:\s[A-Z][a-z]+)*$'
-);
-
-CHECK (
-    name ~ '^[A-Z][a-z]+(?:\s[A-Z][a-z]+)*$'
-);
+ADD CONSTRAINT username_length_check
+CHECK (char_length(full_name) > 1);
