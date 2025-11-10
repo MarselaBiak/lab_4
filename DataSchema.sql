@@ -53,8 +53,9 @@ CREATE TABLE user_feedback (
 
 ALTER TABLE app_users
 ADD CONSTRAINT email_format_check
-CHECK (position('@' IN email) > 1);
+CHECK (POSITION('@' IN email) > 1);
 
 ALTER TABLE app_users
 ADD CONSTRAINT username_length_check
-CHECK (char_length(full_name) > 1);
+CHECK (CHAR_LENGTH(full_name) > 1);
+
